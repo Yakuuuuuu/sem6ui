@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from 'react';
 import { getProductsByBrand } from '@/data/products';
 import { useNavigate } from 'react-router-dom';
@@ -117,14 +115,13 @@ const BrandLogosSection = () => {
         </div>
 
         {/* Infinite scrolling brands container */}
-        <div className="relative w-full">
-          <div className="flex animate-infinite-scroll">
+        <div className="relative w-full overflow-hidden">
+          <div className="flex animate-infinite-scroll min-w-max">
             {/* First set of brands */}
             {brands.map((brand, index) => (
-              <button
+              <div
                 key={`first-${brand.id}`}
-                onClick={() => handleBrandClick(brand.name)}
-                className={`flex-shrink-0 mx-4 flex items-center justify-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-105 ${
+                className={`flex-shrink-0 mx-4 flex items-center justify-center p-6 bg-white rounded-lg shadow-sm transition-all duration-300 ${
                   isVisible 
                     ? 'opacity-100' 
                     : 'opacity-0'
@@ -134,7 +131,7 @@ const BrandLogosSection = () => {
                   minWidth: '200px',
                   width: '200px'
                 }}
-                aria-label={`View ${brand.name} products`}
+                aria-label={`${brand.name} logo`}
               >
                 <div className="w-32 h-16 flex items-center justify-center">
                   <img
@@ -147,21 +144,20 @@ const BrandLogosSection = () => {
                     }}
                   />
                 </div>
-              </button>
+              </div>
             ))}
             
             {/* Second set of brands for seamless infinite loop */}
             {brands.map((brand) => (
-              <button
+              <div
                 key={`second-${brand.id}`}
-                onClick={() => handleBrandClick(brand.name)}
-                className="flex-shrink-0 mx-4 flex items-center justify-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 opacity-100 cursor-pointer hover:scale-105"
+                className="flex-shrink-0 mx-4 flex items-center justify-center p-6 bg-white rounded-lg shadow-sm transition-all duration-300 opacity-100"
                 style={{
                   minWidth: '200px',
                   width: '200px',
                   transition: 'transform 0.3s ease'
                 }}
-                aria-label={`View ${brand.name} products`}
+                aria-label={`${brand.name} logo`}
               >
                 <div className="w-32 h-16 flex items-center justify-center">
                   <img
@@ -174,7 +170,7 @@ const BrandLogosSection = () => {
                     }}
                   />
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </div>

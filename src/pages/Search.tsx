@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Cart from '../components/Cart';
 import ProductCard from '../components/ProductCard';
-import { Product } from '@/data/products';
+import { useProducts } from '@/context/ProductContext';
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,44 +19,8 @@ const Search = () => {
   });
   const [showFilters, setShowFilters] = useState(false);
 
-  // Mock search results with complete Product interface
-  const allProducts: Product[] = [
-    {
-      id: 1,
-      name: 'Air Max 270',
-      price: 150,
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-      category: 'Men\'s Shoes',
-      brand: 'Nike',
-      rating: 4.5,
-      stock: 25,
-      description: 'Comfortable and stylish sneakers with excellent cushioning'
-    },
-    {
-      id: 2,
-      name: 'React Infinity Run',
-      price: 160,
-      image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-      category: 'Running Shoes',
-      brand: 'Nike',
-      rating: 4.8,
-      stock: 15,
-      description: 'High-performance running shoes for long-distance runners'
-    },
-    {
-      id: 3,
-      name: 'Air Force 1',
-      price: 90,
-      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-      category: 'Lifestyle',
-      brand: 'Nike',
-      rating: 4.7,
-      stock: 30,
-      description: 'Timeless basketball-inspired design meets street style'
-    }
-  ];
-
-  const [searchResults, setSearchResults] = useState(allProducts);
+  const { products } = useProducts();
+  const [searchResults, setSearchResults] = useState(products);
 
   useEffect(() => {
     const query = searchParams.get('q') || '';
@@ -64,15 +28,16 @@ const Search = () => {
     
     // Filter products based on search query
     if (query) {
-      const filtered = allProducts.filter(product =>
+      const filtered = products.filter(product =>
         product.name.toLowerCase().includes(query.toLowerCase()) ||
-        product.category.toLowerCase().includes(query.toLowerCase())
+        product.category.toLowerCase().includes(query.toLowerCase()) ||
+        product.brand.toLowerCase().includes(query.toLowerCase())
       );
       setSearchResults(filtered);
     } else {
-      setSearchResults(allProducts);
+      setSearchResults(products);
     }
-  }, [searchParams]);
+  }, [searchParams, products]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

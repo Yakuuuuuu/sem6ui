@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Search, User, ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import ThemeToggle from './ThemeToggle';
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -12,6 +13,7 @@ const Header = ({ onCartClick }: HeaderProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { cartItems } = useCart();
+  const navigate = useNavigate();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const userButtonRef = useRef<HTMLButtonElement>(null);
@@ -54,10 +56,8 @@ const Header = ({ onCartClick }: HeaderProps) => {
 
   const handleSearchKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && searchQuery.trim()) {
-      // Handle search submission
-      console.log('Search for:', searchQuery);
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
       setIsSearchOpen(false);
-      // Announce search action to screen readers
       announceToScreenReader(`Searching for ${searchQuery}`);
     }
   };
