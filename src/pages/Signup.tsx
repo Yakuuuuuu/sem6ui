@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
@@ -106,8 +105,8 @@ const Signup = () => {
       <main className="pt-16">
         <div className="max-w-md mx-auto px-4 py-16">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-black mb-2">Join Nike</h1>
-            <p className="text-gray-600">Create your Nike Member profile</p>
+            <h1 className="text-3xl font-bold text-black mb-2">Join shoeNP</h1>
+            <p className="text-gray-600">Create your shoeNP Member profile</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -240,7 +239,7 @@ const Signup = () => {
                   className="mt-1 rounded border-gray-300"
                 />
                 <span className="text-sm text-gray-600">
-                  I agree to Nike's{' '}
+                  I agree to shoeNP's{' '}
                   <Link to="/privacy" className="text-black hover:underline">Privacy Policy</Link>
                   {' '}and{' '}
                   <Link to="/terms" className="text-black hover:underline">Terms of Use</Link>
@@ -257,7 +256,7 @@ const Signup = () => {
                   className="mt-1 rounded border-gray-300"
                 />
                 <span className="text-sm text-gray-600">
-                  Sign up for emails to get updates from Nike on products, offers and your Member benefits
+                  Sign up for emails to get updates from shoeNP on products, offers and your Member benefits
                 </span>
               </label>
             </div>

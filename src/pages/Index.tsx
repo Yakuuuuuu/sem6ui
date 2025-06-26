@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
@@ -32,7 +31,7 @@ const Index = () => {
         <Header onCartClick={() => setIsCartOpen(true)} />
         
         <main id="main-content" role="main">
-          <h1 className="sr-only">Nike - Athletic Shoes, Clothing & Accessories</h1>
+          <h1 className="sr-only">shoeNP - Athletic Shoes, Clothing & Accessories</h1>
           
           <section aria-label="Hero banner">
             <HeroSection />

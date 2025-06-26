@@ -1,10 +1,9 @@
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerSections = [
     {
-      title: 'About Nike',
+      title: 'About shoeNP',
       links: [
         { label: 'News', href: '#' },
         { label: 'Careers', href: '#' },
@@ -22,11 +21,11 @@ const Footer = () => {
       ]
     },
     {
-      title: 'Nike Membership',
+      title: 'shoeNP Membership',
       links: [
         { label: 'Sign Up', href: '#' },
         { label: 'Member Benefits', href: '#' },
-        { label: 'Nike App', href: '#' },
+        { label: 'shoeNP App', href: '#' },
         { label: 'SNKRS App', href: '#' }
       ]
     }
@@ -60,29 +59,22 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-12" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Sections */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {footerSections.map((section) => (
             <div key={section.title}>
               <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
-              <nav aria-label={section.title}>
-                <ul className="space-y-2" role="list">
-                  {section.links.map((link) => (
-                    <li key={link.label} role="listitem">
-                      <a 
-                        href={link.href} 
-                        className="text-gray-300 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              <ul>
+                {section.links.map((link) => (
+                  <li key={link.label} className="mb-2">
+                    <a href={link.href} className="text-gray-300 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
 
-          {/* Newsletter */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Stay Connected</h3>
             <p className="text-gray-300 mb-4">Get the latest updates on new releases and exclusive offers.</p>
@@ -100,7 +92,7 @@ const Footer = () => {
                 aria-describedby="newsletter-description"
               />
               <div id="newsletter-description" className="sr-only">
-                Subscribe to receive Nike updates and exclusive offers
+                Subscribe to receive shoeNP updates and exclusive offers
               </div>
               <button 
                 type="submit"
@@ -116,7 +108,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-6 mb-4 md:mb-0">
-              <span className="text-gray-400">© {currentYear} Nike, Inc. All Rights Reserved</span>
+              <span className="text-gray-400">© {currentYear} shoeNP, Inc. All Rights Reserved</span>
             </div>
             <nav aria-label="Legal links" className="flex space-x-6">
               {legalLinks.map((link) => (

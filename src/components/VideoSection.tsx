@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { Video, Youtube, Volume2, VolumeX } from 'lucide-react';
 
@@ -51,7 +50,7 @@ const VideoSection = () => {
             Just Do It
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Experience the power of Nike innovation through our athletes' journeys. 
+            Experience the power of shoeNP innovation through our athletes' journeys. 
             Witness determination, dedication, and the relentless pursuit of greatness.
           </p>
         </div>
@@ -83,7 +82,7 @@ const VideoSection = () => {
           </div>
 
           <div id="video-description" className="sr-only">
-            Nike brand video showcasing athletic performance and innovation
+            shoeNP brand video showcasing athletic performance and innovation
           </div>
 
           {/* Custom Play Button Overlay */}
@@ -91,7 +90,7 @@ const VideoSection = () => {
             <button
               onClick={handlePlayPause}
               className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-60 transition-all duration-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
-              aria-label="Play Nike brand video"
+              aria-label="Play shoeNP brand video"
             >
               <div className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-6 transform hover:scale-110 transition-all duration-300">
                 <Video className="h-12 w-12 text-black" aria-hidden="true" />
@@ -133,7 +132,7 @@ const VideoSection = () => {
           </p>
           <button 
             className="bg-white text-black px-8 py-3 text-lg font-semibold rounded-full hover:bg-gray-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
-            aria-label="Shop Nike athletic collection"
+            aria-label="Shop shoeNP athletic collection"
           >
             Shop Now
           </button>

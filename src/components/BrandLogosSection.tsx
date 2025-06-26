@@ -43,32 +43,32 @@ const BrandLogosSection = () => {
     {
       id: 7,
       name: 'Goldstar',
-      logo: 'https://goldstarshoes.com/wp-content/uploads/2019/12/goldstar-logo.png'
+      logo: 'https://images.seeklogo.com/logo-png/49/1/goldstar-logo-png_seeklogo-490403.png'
     },
     {
       id: 8,
       name: 'Bata Nepal',
-      logo: 'https://www.bata.com.np/media/logo/stores/1/bata-logo.png'
+      logo: 'https://images.seeklogo.com/logo-png/1/1/bata-logo-png_seeklogo-17000.png'
     },
     {
       id: 9,
-      name: 'Power',
-      logo: 'https://powershoes.com.np/images/logo.png'
+      name: 'Erke',
+      logo: 'https://images.seeklogo.com/logo-png/28/2/erke-logo-png_seeklogo-281917.png'
     },
     {
       id: 10,
-      name: 'Lakhure',
-      logo: 'https://lakhureshoes.com/assets/images/logo.png'
+      name: 'Peak',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Peak_Logo.svg/426px-Peak_Logo.svg.png'
     },
     {
       id: 11,
-      name: 'Ganga',
-      logo: 'https://gangashoes.com/wp-content/uploads/2020/01/ganga-logo.png'
+      name: 'Shikhar',
+      logo: 'https://www.shikharshoe.com.np/img/shikhar-logo/shikhar-1.png'
     },
     {
       id: 12,
       name: 'Caliber',
-      logo: 'https://calibershoes.com/images/caliber-logo.png'
+      logo: 'https://caliber-kd-shoes.s3.ap-south-1.amazonaws.com/uploads/2023/11/19183610/cropped-1200x630wa.png'
     }
   ];
 

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
@@ -66,7 +65,7 @@ const Login = () => {
         <div className="max-w-md mx-auto px-4 py-16">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-black mb-2">Sign In</h1>
-            <p className="text-gray-600">Welcome back to Nike</p>
+            <p className="text-gray-600">Welcome back to shoeNP</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">

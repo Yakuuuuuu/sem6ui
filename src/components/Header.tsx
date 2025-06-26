@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Search, User, ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -87,7 +86,7 @@ const Header = ({ onCartClick }: HeaderProps) => {
             <a 
               href="/" 
               className="flex items-center focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded"
-              aria-label="Nike - Go to homepage"
+              aria-label="shoeNP - Go to homepage"
             >
               <svg 
                 className="h-8 w-8 text-black transition-colors duration-200" 
@@ -97,7 +96,7 @@ const Header = ({ onCartClick }: HeaderProps) => {
                 focusable="false"
                 role="img"
               >
-                <title>Nike Logo</title>
+                <title>shoeNP Logo</title>
                 <path d="M24 7.8L6.442 15.276c-1.456.616-2.679.925-3.668.925-1.456 0-2.525-.616-2.525-1.848 0-.462.154-.925.462-1.232.77-.77 2.063-.616 3.053-.154L21.805 5.952C22.882 5.49 24 6.16 24 7.8z"/>
               </svg>
             </a>
@@ -191,14 +190,14 @@ const Header = ({ onCartClick }: HeaderProps) => {
         {isSearchOpen && (
           <div className="pb-4" role="search" aria-label="Product search">
             <label htmlFor="search-input" className="sr-only">
-              Search Nike products
+              Search shoeNP products
             </label>
             <div className="relative">
               <input
                 id="search-input"
                 ref={searchInputRef}
                 type="text"
-                placeholder="Search Nike products..."
+                placeholder="Search shoeNP products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleSearchKeyDown}

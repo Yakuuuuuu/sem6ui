@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Mail } from 'lucide-react';
 
@@ -48,7 +47,7 @@ const NewsletterSection = () => {
               </button>
             </div>
             <p className="text-sm text-gray-400 mt-4">
-              By subscribing, you agree to Nike's Privacy Policy and Terms of Use.
+              By subscribing, you agree to shoeNP's Privacy Policy and Terms of Use.
             </p>
           </form>
         )}
