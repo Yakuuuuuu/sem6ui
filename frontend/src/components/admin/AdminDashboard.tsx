@@ -1,5 +1,6 @@
 import { Package, ShoppingCart, Users, DollarSign } from 'lucide-react';
 import { useProducts, Product } from '@/context/ProductContext';
+import { useEffect, useState } from 'react';
 
 const AdminDashboard = () => {
   const { products } = useProducts();
@@ -13,6 +14,34 @@ const AdminDashboard = () => {
     { title: 'Active Users', value: '-', icon: Users, color: 'bg-purple-500' },
     { title: 'Avg. Price', value: `$${averagePrice}`, icon: DollarSign, color: 'bg-orange-500' },
   ];
+
+  // --- New state for backend connectivity and recent orders ---
+  const [orders, setOrders] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [backendConnected, setBackendConnected] = useState(true);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      setLoading(true);
+      try {
+        const token = localStorage.getItem('token');
+        const API_URL = import.meta.env.VITE_API_URL;
+        const res = await fetch(`${API_URL}/orders/all`, {
+          headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+        });
+        if (!res.ok) throw new Error('Backend not connected');
+        const data = await res.json();
+        setOrders(Array.isArray(data) ? data : []);
+        setBackendConnected(true);
+      } catch {
+        setBackendConnected(false);
+        setOrders([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchOrders();
+  }, []);
 
   return (
     <div>
@@ -42,25 +71,60 @@ const AdminDashboard = () => {
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
           <div className="text-center py-8">
             <ShoppingCart className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-            <p className="text-gray-500">No recent activity</p>
-            <p className="text-sm text-gray-400 mt-2">Connect to a backend to track orders and activity</p>
+            {loading ? (
+              <p className="text-gray-500">Loading...</p>
+            ) : !backendConnected ? (
+              <>
+                <p className="text-gray-500">Unable to connect to backend</p>
+                <p className="text-sm text-gray-400 mt-2">Connect to a backend to track orders and activity</p>
+              </>
+            ) : orders.length === 0 ? (
+              <>
+                <p className="text-gray-500">No recent activity</p>
+                <p className="text-sm text-gray-400 mt-2">Your recent orders and activity will appear here</p>
+              </>
+            ) : (
+              <div className="space-y-3">
+                {orders.slice(0, 5).map((order, i) => (
+                  <div key={order._id || i} className="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div className="text-left">
+                      <p className="font-medium">Order #{order.orderNumber || order._id}</p>
+                      <p className="text-sm text-gray-600">{order.userId?.email || 'N/A'} - {new Date(order.createdAt).toLocaleDateString()}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-medium">${order.totalAmount || order.total}</p>
+                      <span className="inline-block px-2 py-1 rounded-full text-xs bg-gray-200 text-gray-800 ml-2">{order.status}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Product Overview</h3>
-          <div className="space-y-3">
-            {products.slice(0, 5).map((product, i) => (
-              <div key={i} className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                <div>
-                  <p className="font-medium">{product.name}</p>
-                  <p className="text-sm text-gray-600">{product.brand} - Stock: {product.stock}</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-medium">${product.price}</p>
-                </div>
-              </div>
-            ))}
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Brand</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
+                  <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {products.slice(0, 5).map((product, i) => (
+                  <tr key={i}>
+                    <td className="px-4 py-2 whitespace-nowrap font-medium">{product.name}</td>
+                    <td className="px-4 py-2 whitespace-nowrap">{product.brand}</td>
+                    <td className="px-4 py-2 whitespace-nowrap">{product.stock}</td>
+                    <td className="px-4 py-2 whitespace-nowrap">${product.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

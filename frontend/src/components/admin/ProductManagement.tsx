@@ -203,10 +203,10 @@ const ProductManagement = () => {
                     </TableCell>
                   </TableRow>
                 ) : (
-                  filteredProducts.map((product) => {
+                  filteredProducts.map((product, i) => {
                     const stockStatus = getStockStatus(product.stock);
                     return (
-                      <TableRow key={product.id}>
+                      <TableRow key={product._id || product.id || i}>
                         <TableCell>
                           <img 
                             src={product.image} 
