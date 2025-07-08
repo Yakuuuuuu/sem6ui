@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useProducts } from '@/context/ProductContext';
+import { useProducts } from '../features/products/components/ProductContext';
 
 export interface RecentlyViewedProduct {
   _id?: string;

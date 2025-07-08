@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, User, ShoppingCart, Menu, X, Heart } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../features/cart/CartContext';
 import ThemeToggle from './ThemeToggle';
 import { useNavigate } from 'react-router-dom';
-import { useWishlist } from '../context/WishlistContext';
+import { useWishlist } from '../features/wishlist/WishlistContext';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -90,17 +90,12 @@ const Header = ({ onCartClick }: HeaderProps) => {
               className="flex items-center focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded"
               aria-label="shoeNP - Go to homepage"
             >
-              <svg 
-                className="h-8 w-8 text-black transition-colors duration-200" 
-                viewBox="0 0 24 24" 
-                fill="currentColor"
-                aria-hidden="true"
-                focusable="false"
-                role="img"
-              >
-                <title>shoeNP Logo</title>
-                <path d="M24 7.8L6.442 15.276c-1.456.616-2.679.925-3.668.925-1.456 0-2.525-.616-2.525-1.848 0-.462.154-.925.462-1.232.77-.77 2.063-.616 3.053-.154L21.805 5.952C22.882 5.49 24 6.16 24 7.8z"/>
-              </svg>
+              <img 
+                src="/favicon.png" 
+                alt="shoeNP Logo" 
+                className="h-8 w-8 object-contain transition-colors duration-200" 
+                style={{ display: 'block' }}
+              />
             </a>
           </div>
 

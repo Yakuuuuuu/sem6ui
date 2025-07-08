@@ -10,6 +10,8 @@ import usersRouter from './routes/users.js';
 import ordersRouter from './routes/orders.js';
 import addressesRouter from './routes/addresses.js';
 import paymentMethodsRouter from './routes/paymentMethods.js';
+import adminRouter from './routes/admin.js';
+import reviewsRouter from './routes/reviews.js';
 
 dotenv.config();
 
@@ -33,6 +35,8 @@ app.use('/api/users', usersRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/addresses', addressesRouter);
 app.use('/api/payment-methods', paymentMethodsRouter);
+app.use('/api/admin', adminRouter);
+app.use('/api/reviews', reviewsRouter);
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,

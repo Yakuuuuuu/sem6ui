@@ -3,10 +3,11 @@ import { ChevronLeft, CreditCard, Check } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../features/cart/CartContext';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement } from '@stripe/react-stripe-js';
 import { useStripe, useElements } from '@stripe/react-stripe-js';
+import { toNPR } from '../utils/utils';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUB_KEY || '');
 
@@ -534,7 +535,7 @@ const Checkout = () => {
                         </div>
                         <p className="text-xs text-gray-600">Qty: {item.quantity}</p>
                       </div>
-                      <p className="text-sm font-semibold">${(Number(item.price) > 0 ? (item.price * item.quantity).toFixed(2) : '0.00')}</p>
+                      <p className="text-sm font-semibold">रू{toNPR(item.price * item.quantity)}</p>
                     </div>
                   ))}
                 </div>
@@ -542,26 +543,26 @@ const Checkout = () => {
                 <div className="border-t border-gray-200 pt-4 space-y-2">
                   <div className="flex justify-between text-sm">
                     <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>रू{toNPR(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span>Shipping</span>
-                    <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                    <span>{shipping === 0 ? 'Free' : `रू${toNPR(shipping)}`}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span>Tax</span>
-                    <span>${tax.toFixed(2)}</span>
+                    <span>रू{toNPR(tax)}</span>
                   </div>
                   <div className="flex justify-between font-semibold text-lg border-t border-gray-200 pt-2">
                     <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>रू{toNPR(total)}</span>
                   </div>
                 </div>
 
                 {subtotal < 50 && (
                   <div className="mt-4 p-3 bg-blue-50 rounded-lg">
                     <p className="text-sm text-blue-800">
-                      Add ${(50 - subtotal).toFixed(2)} more for free shipping!
+                      Add रू{toNPR(50 - subtotal)} more for free shipping!
                     </p>
                   </div>
                 )}

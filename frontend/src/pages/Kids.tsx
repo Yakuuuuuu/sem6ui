@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Cart from '../components/Cart';
-import ProductCard from '../components/ProductCard';
-import { useProducts } from '@/context/ProductContext';
+import Cart from '../features/cart/components/Cart';
+import ProductCard from '../features/products/components/ProductCard';
+import { useProducts } from '../features/products/components/ProductContext';
 
 const Kids = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);

@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Cart from '../components/Cart';
-import ProductCard from '../components/ProductCard';
-import { useProducts } from '@/context/ProductContext';
+import Cart from '../features/cart/components/Cart';
+import ProductCard from '../features/products/components/ProductCard';
+import { useProducts } from '../features/products/components/ProductContext';
 
 const Women = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -25,15 +25,7 @@ const Women = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {womenProducts.map((product) => (
               <Link key={product._id || product.id} to={`/product/${product._id || product.id}`}>
-                <ProductCard product={{
-                  _id: product._id,
-                  id: product.id,
-                  name: product.name,
-                  price: product.price,
-                  image: product.image || '',
-                  category: product.category || '',
-                  rating: product.rating || 0
-                }} />
+                <ProductCard product={product} />
               </Link>
             ))}
           </div>

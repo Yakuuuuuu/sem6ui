@@ -1,8 +1,8 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Cart from '../components/Cart';
-import ProductGrid from '../components/ProductGrid';
-import { useProducts } from '../context/ProductContext';
+import Cart from '../features/cart/components/Cart';
+import ProductGrid from '../features/products/components/ProductGrid';
+import { useProducts } from '../features/products/components/ProductContext';
 import { useState } from 'react';
 
 const nepaliBrands = [

@@ -5,6 +5,10 @@ const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
 
+  // Remove friendlyWelcome and Nepali tagline
+  // const friendlyWelcome = "";
+  const nepaliTagline = "Nepal’s #1 sneaker destination";
+
   const slides = [
     {
       image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
@@ -16,13 +20,13 @@ const HeroSection = () => {
       image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
       title: 'Air Max Collection',
       subtitle: 'Step into comfort with the latest Air Max technology',
-      cta: 'Explore Collection'
+      
     },
     {
       image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
       title: 'Performance Gear',
       subtitle: 'Elevate your game with professional athletic wear',
-      cta: 'Shop Gear'
+ 
     }
   ];
 
@@ -51,6 +55,14 @@ const HeroSection = () => {
       role="region"
       aria-label="Hero carousel"
     >
+      {/* Friendly welcome and tagline */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20 text-center">
+        {/* Removed friendlyWelcome */}
+        <div className="text-lg md:text-xl text-white bg-black bg-opacity-60 px-4 py-1 rounded-full inline-block animate-fade-in-slow">
+          {nepaliTagline}
+        </div>
+      </div>
+
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].title}
       </div>
@@ -81,11 +93,11 @@ const HeroSection = () => {
                 {slide.subtitle}
               </p>
               <button 
-                className="bg-white text-black px-8 py-3 text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 animate-fade-in focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded"
-                aria-label={`${slide.cta} - ${slide.title}`}
+                className="bg-white text-black px-8 py-3 text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 animate-fade-in focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded shadow-lg hover:scale-105 active:scale-95 transform transition-transform duration-200"
+                aria-label={`Browse Nepali Kicks - ${slide.title}`}
                 onClick={() => navigate('/products')}
               >
-                {slide.cta}
+                Browse Nepali Kicks 🚀
               </button>
             </div>
           </div>

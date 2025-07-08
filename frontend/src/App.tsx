@@ -1,30 +1,33 @@
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "./components/toaster";
+import { TooltipProvider } from "./components/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from './context/AuthContext';
-import { CartProvider } from './context/CartContext';
-import { ThemeProvider } from './context/ThemeContext';
-import { CompareProvider } from './context/CompareContext';
-import { ProductProvider } from './context/ProductContext';
-import { WishlistProvider } from './context/WishlistContext';
-import Index from "./pages/Index";
+import { AuthProvider } from './features/auth/AuthContext';
+import { CartProvider } from './features/cart/CartContext';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { CompareProvider } from './features/products/CompareContext';
+import { ProductProvider } from './features/products/components/ProductContext';
+import { WishlistProvider } from './features/wishlist/WishlistContext';
+import Index from "./pages/Home";
 import Men from "./pages/Men";
 import Women from "./pages/Women";
 import Kids from "./pages/Kids";
-import Collections from "./pages/Collections";
-import ProductDetail from "./pages/ProductDetail";
-import Search from "./pages/Search";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Profile from "./pages/Profile";
-import Wishlist from "./pages/Wishlist";
+import Collections from "./features/products/pages/Collections";
+import ProductDetail from "./features/products/components/ProductDetail";
+import Search from "./features/products/pages/Search";
+import Login from "./features/auth/pages/Login";
+import Signup from "./features/auth/pages/Signup";
+import Profile from "./features/auth/pages/Profile";
+import Wishlist from "./features/wishlist/pages/Wishlist";
 import Checkout from "./pages/Checkout";
-import Admin from "./pages/Admin";
+import Admin from "./features/admin/pages/Admin";
 import NotFound from "./pages/NotFound";
-import CartPage from './pages/CartPage';
-import AllProducts from './pages/AllProducts';
-import NepaliHeritage from './pages/NepaliHeritage';
+import CartPage from './features/cart/pages/CartPage';
+import AllProducts from './features/products/components/AllProducts';
+import NepaliHeritage from "./pages/NepaliHeritage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
+import CASupplyChainsAct from "./pages/CASupplyChainsAct";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +59,9 @@ function App() {
                         <Route path="/admin" element={<Admin />} />
                         <Route path="/cart" element={<CartPage />} />
                         <Route path="/products" element={<AllProducts />} />
+                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                        <Route path="/terms-of-use" element={<TermsOfUse />} />
+                        <Route path="/ca-supply-chains-act" element={<CASupplyChainsAct />} />
                         <Route path="*" element={<NotFound />} />
                       </Routes>
                       <Toaster />

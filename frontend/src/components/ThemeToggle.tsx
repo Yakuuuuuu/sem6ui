@@ -1,8 +1,8 @@
 
 import { LogIn, LogOut, User as UserIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '../features/auth/AuthContext';
+import { useToast } from '../hooks/useToast';
 
 const ThemeToggle = () => {
   const navigate = useNavigate();
